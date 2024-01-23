@@ -1,0 +1,287 @@
+#:import menu menu
+
+
+CanvasExample7:
+<CanvasExample7>:
+
+
+    canvas.before:
+        Rectangle:
+            size: self.size
+            source: "images/bg1.jpg"
+    menu_widget: menu_widget
+    perspective_point_x: self.width/2
+    perspective_point_y: self.height * 0.75
+
+
+    MenuWidget:
+        id: menu_widget
+
+    Label:
+        text: root.score
+        font_size: dp(20)
+        font_name: "fonts/Eurostile.ttf"
+        size_hint: .18, .2
+        pos_hint: {"x": 0, "top": 1}
+
+
+<CanvasExample6>:
+    BoxLayout:
+        size: root.size
+        Widget:
+            canvas:
+                Color:
+                    rgb: 0,0,1
+                Rectangle:
+                    size: self.size
+                
+        RelativeLayout:
+            canvas:
+                Color:
+                    rgb: 1,1,1
+                Rectangle:
+                    size: self.size
+                 
+        RelativeLayout:
+            canvas:
+                Color:
+                    rgb: 1,0,0
+                Rectangle:
+                    size: self.size
+                    
+
+<CanvasExample4>:
+    Button:
+        size: dp(40), dp(40)
+        pos: dp(40), dp(40)
+        text: "A"
+        on_press: root.move_rect_right()
+    Button:
+        size: dp(40), dp(40)
+        pos: dp(90), dp(90)
+        text: "B"
+        on_press: root.move_rect_left()
+        
+
+
+<CanvasExample3>:
+    canvas:
+        Color:
+            rgb: .4, .3, .2
+        Line:
+            circle: (200, 200, 100) # center_x, center_y, radius
+            width: 2
+        Line:
+            ellipse: (500, 300, 200, 100) # center_x, center_y, radius_x, radius_y
+            width: 6
+          
+        Line:
+            rectangle: (800, 100, 300, 200) # x,y,w,h
+
+<CanvasExample2>:
+    canvas:
+        Line:
+            points: (self.width/2, 0, self.width/2, self.height)
+        Line:
+            points: (0, self.height/2, self.width, self.height/2)
+
+
+
+<CanvasExample1>:
+    canvas:
+        # Rectangle:
+            #pos: self.center_x - s/2, self.center_y - s/2
+            # size: dp(100), dp(100)
+            #size: s, s
+        Ellipse:
+            pos: self.center_x, self.center_y
+            size: s, s
+        Line:
+            points: (0, 0, self.width/4, 300, self.width/2, 0, self.width*3/4, 300, self.width, 0)
+            width: 2
+        
+
+
+<ImagesExample>:
+    cols: 3
+
+    Image: 
+        source: "images/bg1.jpg"
+    Image: 
+        source: "images/bg1.jpg"
+        allow_stretch: True
+    Image: 
+        source: "images/bg1.jpg"
+        #allow_stretch: True
+        #keep_ratio: False
+
+<WidgetsExample>:
+    cols: 2
+
+    ToggleButton:
+        text: "Off"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp"
+        disabled:root.toggle_disabled
+
+    Button: 
+        text: "Count up"
+        on_press: root.on_button_up()
+        disabled: root.button_disabled
+
+    Button: 
+        text: "Count down"
+        on_press: root.on_button_down()
+       # disabled: root.button_disabled
+
+
+    Label:
+        text: root.my_text
+        font_name: "fonts/Sackers-Gothic-Std-Light.ttf"
+        font_size: "80dp"
+        color: 1, .5, 1, 1
+
+    Switch:
+        id: toggle
+        size_hint: None, 1
+        width: "100dp"
+        on_active: root.on_switch_active(self)
+
+    Slider:
+        id: my_slider
+        min: 0
+        max: 100
+        orientation: "vertical"
+        # on_value: root.on_slider_value(self)
+        disabled: not toggle.active
+    BoxLayout:    
+        Label:
+            text: str(int(my_slider.value))
+        ProgressBar:
+            max:100
+            min:0
+            value: my_slider.value
+    TextInput:
+        id: my_text_input
+        text: "hello"
+        size_hint: None, 1
+        width: "100dp"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: root.Text_Input
+
+<PageLayoutExample>:
+    MainWidget:
+    BoxLayoutExample:
+    AnchorLayoutExample:
+    GridLayoutExample:
+
+
+<ScrollViewExample>:
+    StackLayoutExample:
+
+        
+<StackLayoutExample>:
+    # orientation: "tp-tb"
+    # padding: ("20dp", "20dp", "20dp", "20dp")
+    # spacing: ("20dp", "20dp")
+    
+<GridLayoutExample>:
+    rows: 5
+    Button:
+        text: "A"
+        size_hint: .5, .5
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: "B1"
+        Button:
+            text: "B2"
+        Button:
+            text: "B3"
+    Button:
+        size_hint: .5, .5
+        text: "C"
+    Button:
+        text: "D"
+    Button:
+        text: "E"
+    Button:
+        text: "F"
+
+
+
+<AnchorLayoutExample>:
+    anchor_x: "center"
+    anchor_y: "top"
+    BoxLayout:
+        size_hint: .5, .5
+        Button:
+            text: "A"
+        Button:
+            text: "B"
+  
+
+<BoxLayoutExample>:
+
+    # orientation: "vertical"
+    Button:
+        text: "A"
+        size_hint: 0.5, 0.5
+        # size: "40dp", "40dp"
+        pos_hint: {"center_y": 0.5}
+        
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: "B1"
+            size_hint: 1, 1
+            # size: "40dp", "40dp"
+            pos_hint: {"center_y": 0.5}
+            
+        Button
+            text: "B2"
+            size_hint: 1, 1
+            # size: "40dp", "40dp"
+            pos_hint: {"center_y": 0.5}
+            
+        Button:
+            text: "B3"
+            size_hint: 1, 1
+            # size: "40dp", "40dp"
+            pos_hint: {"center_y": 0.5}
+            
+        Button:
+            text: "B4"
+            size_hint: 1, 1
+            # size: "40dp", "40dp"
+            pos_hint: {"center_y": 0.5}
+            
+    Button:
+        text: "C"
+        size_hint: .5 , .5
+        # size: "40dp", "40dp"
+        pos_hint: {"center_y": 0.5}
+
+    Button:
+        text: "D"
+        size_hint: .5 , .5 
+        # size: "40dp", "40dp"
+        pos_hint: {"center_y": 0.5}
+
+    
+
+<MainWidget>:
+
+    Button:
+        text: "Hello"
+        size: "40dp" , "40dp"
+        pos: 100, 100
+        color: 1, 0.1, 0.4, 1
+    Label:
+        text: "yello"
+        size: "40dp" , "40dp"
+        pos: "300dp", "300dp"
+        color: 1, 0.1, 0.4, 1
