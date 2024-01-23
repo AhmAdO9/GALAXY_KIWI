@@ -44,11 +44,11 @@ class CanvasExample7(RelativeLayout):
     horizontal_lines = []
 
 
-    SPEED_Y = 2.0
+    SPEED_Y = 1.0
     current_offset_y = 0
 
 
-    SPEED_X = 5.0
+    SPEED_X = 3.0
     current_speed_x = 0
     current_offset_x = 0
     current_y_loop = 0
